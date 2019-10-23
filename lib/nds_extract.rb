@@ -18,26 +18,21 @@ def directors_totals(nds)
   #
   #
   # Be sure to return the result at the end!
- grand_total = 0
-row_index = 0
-while row_index < nds.length do
-  column_index = 0
-  while column_index < nds[row_index].length do
-    inner_len = nds[row_index][column_index].length
-    inner_index = 0
-    while inner_index < inner_len do
-      # Explanation!
-      # vm[row][column][spinner]
-      # total titles by name - movies -- title for each director 
-      titles = []
-      titles << nds[row_index][column_index][inner_index][:title]
-      grand_total = titles.length
-      inner_index += 1
+  director_index = 0
+  totals = {}
+
+  while director_index < nds.length do
+    director_name = nds[director_index][:name]
+    totals[director_name] = 0
+    movie_index = 0
+
+    while movie_index < nds[director_index][:movies].length do
+      totals[director_name] += nds[director_index][:movies][movie_index][:worldwide_gross]
+      movie_index += 1
     end
-    column_index += 1
+
+    director_index += 1
   end
-  row_index += 1
-end
- 
-p grand_total
+
+  totals
 end
