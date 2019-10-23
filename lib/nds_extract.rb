@@ -29,7 +29,8 @@ while row_index < directors_database.length do
       # Explanation!
       # vm[row][column][spinner]
       # total titles by name - movies -- title for each director 
-      grand_total = directors_database[row_index][column_index][inner_index][:title].length
+      titles << directors_database[row_index][column_index][inner_index][:title]
+      grand_total = titles.length
       inner_index += 1
     end
     column_index += 1
